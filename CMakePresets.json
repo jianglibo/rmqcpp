@@ -35,7 +35,7 @@
         {
             "name": "linux-x64-vcpkg",
             "description": "VCPKG based configuration for building on x86_64-based Linux",
-            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "toolchainFile": "/home/jianglibo/tmp/about-vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "inherits": "base"
         }
     ]
