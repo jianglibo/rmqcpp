@@ -444,9 +444,8 @@ bool AsioConnection<SocketType>::doRead(bsl::size_t bytes_transferred)
     bsl::size_t bytes_decoded                       = 0;
     boost::asio::streambuf::const_buffers_type bufs = d_inbound->data();
     bsl::vector<rmqamqpt::Frame> readFrames;
-    for (boost::asio::streambuf::const_buffers_type::const_iterator i =
-             bufs.begin();
-         i != bufs.end();
+    for (auto i = boost::asio::buffer_sequence_begin(bufs);
+         i != boost::asio::buffer_sequence_end(bufs);
          ++i) {
         boost::asio::const_buffer buf(*i);
         Decoder::ReturnCode rcode =
