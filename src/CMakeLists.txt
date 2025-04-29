@@ -10,4 +10,4 @@ find_package(bal REQUIRED)
 
 add_subdirectory(rmq)
 add_subdirectory(rmqtestmocks)
-# add_subdirectory(tests)
+add_subdirectory(tests)
