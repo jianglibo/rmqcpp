@@ -20,6 +20,11 @@ set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)
 
+message(STATUS "OpenSSL found: ${OPENSSL_FOUND}")
+message(STATUS "OpenSSL include dir: ${OPENSSL_INCLUDE_DIR}")
+message(STATUS "OpenSSL libraries: ${OPENSSL_LIBRARIES}")
+
+
 target_link_libraries(rmqio PUBLIC
     ZLIB::ZLIB
     OpenSSL::Crypto
