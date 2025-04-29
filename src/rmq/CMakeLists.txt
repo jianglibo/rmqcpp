@@ -16,7 +16,13 @@ add_library(rmq STATIC
 
 target_link_libraries(rmq PUBLIC bsl bdl bal ZLIB::ZLIB OpenSSL::Crypto OpenSSL::SSL)
 
-get_target_property(OPENSSL_TARGET_TYPE OpenSSL::SSL TYPE)
+if (TARGET OpenSSL::SSL)
+    get_target_property(OPENSSL_TARGET_TYPE OpenSSL::SSL TYPE)
+else()
+    message(WARNING "CMake target OpenSSL::SSL not found; skipping OPENSSL_TARGET_TYPE detection")
+endif()
+
+# Detect if we're using static OpenSSL (still works without target)
 if(OPENSSL_CRYPTO_LIBRARY MATCHES "\\.a$")
     target_compile_definitions(rmq PUBLIC WITH_STATIC_LIB_libcrypto)
 endif()
